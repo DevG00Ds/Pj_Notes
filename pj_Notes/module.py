@@ -7,6 +7,29 @@ def show_all_notes(txt):
         print("Журнал заметок : ")
         for i in array_note:
             print(Note.Note.map_note(i))
+    elif txt == "ID":
+        for i in array_note:
+            print("ID : ", Note.Note.cr_id(i))
+        id = input("Введите номер ID заметки : ")
+        flag = True
+        for i in array_note:
+            if id == Note.Note.cr_id(i):
+                print(Note.Note.map_note(i))
+                flag = False
+        if flag:
+            print(" Нет такого ID.")
+    elif txt == "data":
+        data = input("Введите дату (День.Месяц.Год) : ")
+        flag = True
+        for i in array_note:
+            note_date = str(Note.Note.cr_date(i))
+            if data == note_date[:10]:
+                print(Note.Note.map_note(i))
+                flag = False
+        if flag:
+            print("Нет такой даты")
+    else:
+        print("Журнал пустой")
 
 
 def create_file(array, mode):
